@@ -16,18 +16,18 @@
     path: /app
     state: directory
 
-- name: delete {{ server }} zip file
+- name: delete {{ component }} zip file
   ansible.builtin.file:
-    path: /tmp/{{ server }}.zip
+    path: /tmp/{{ component }}.zip
     state: absent
 
-- name: download {{ server }}
+- name: download {{ component }}
   ansible.builtin.get_url:
-    url: https://roboshop-artifacts.s3.amazonaws.com/{{ server }}-v3.zip 
-    dest: /tmp/{{ server }}.zip
+    url: https://roboshop-artifacts.s3.amazonaws.com/{{ component }}-v3.zip 
+    dest: /tmp/{{ component }}.zip
 
-- name: unarchieve {{ server }}
+- name: unarchieve {{ component }}
   ansible.builtin.unarchive:
-    src: /tmp/{{ server }}.zip
+    src: /tmp/{{ component }}.zip
     dest: /app
     remote_src: yes
